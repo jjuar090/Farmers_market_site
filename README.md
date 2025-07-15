@@ -1,36 +1,123 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FarmFinder - Farmers Market Directory
 
-## Getting Started
+A beautiful, modern web application to discover and explore farmers markets in your area. Built with Next.js, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Real Data**: Displays actual farmers markets from CSV data
+- **Beautiful UI**: Modern, responsive design with smooth animations
+- **Search & Filter**: Find markets by location, county, or state
+- **Detailed Information**: View market hours, descriptions, contact info, and more
+- **Mobile Friendly**: Works perfectly on all devices
+
+## 📊 Data Source
+
+The application uses real farmers market data from a CSV file containing:
+- Market names and descriptions
+- Full addresses and locations
+- Operating hours and days
+- Contact information (phone, email, website)
+- Geographic data (county, state)
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js 14 with App Router
+- **Styling**: Tailwind CSS with custom components
+- **Language**: TypeScript for type safety
+- **Data**: CSV parsing with custom utilities
+- **Icons**: Lucide React icons
+
+## 🏃‍♂️ Getting Started
+
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+2. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
+
+3. **Open your browser**:
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📁 Project Structure
+
+```
+my-app/
+├── app/
+│   ├── api/markets/route.ts    # API endpoint for markets data
+│   ├── markets/page.tsx        # All markets listing page
+│   ├── page.tsx               # Home page with featured markets
+│   └── farmers_markets (1).csv # Data source
+├── components/
+│   └── ui/                    # Reusable UI components
+├── lib/
+│   └── csv-utils.ts           # CSV parsing utilities
+└── public/                    # Static assets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎯 Key Components
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Home Page (`app/page.tsx`)
+- Hero section with search functionality
+- Featured markets display (first 6 from CSV)
+- Statistics section
+- Responsive navigation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Markets Page (`app/markets/page.tsx`)
+- Complete listing of all markets
+- Search and filter functionality
+- Sort by name, city, county, or state
+- Loading states and error handling
 
-## Learn More
+### CSV Utilities (`lib/csv-utils.ts`)
+- Parses CSV data with proper quote handling
+- TypeScript interfaces for type safety
+- Helper functions for data manipulation
 
-To learn more about Next.js, take a look at the following resources:
+### API Route (`app/api/markets/route.ts`)
+- Serves CSV data as JSON
+- Error handling and proper HTTP responses
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎨 Design Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Green Theme**: Fresh, nature-inspired color scheme
+- **Card Layout**: Clean, organized market information
+- **Responsive Grid**: Adapts to different screen sizes
+- **Hover Effects**: Interactive elements with smooth transitions
+- **Typography**: Clear, readable text hierarchy
 
-## Deploy on Vercel
+## 📱 Responsive Design
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Mobile**: Single column layout with optimized spacing
+- **Tablet**: Two-column grid for markets
+- **Desktop**: Three-column grid with full navigation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔧 Customization
+
+### Adding More Markets
+Simply update the CSV file with new market data following the same format.
+
+### Styling Changes
+Modify the Tailwind classes in the component files or update the global CSS.
+
+### Data Structure
+The CSV should include these columns:
+- state_name, state_abbreviation, county_name
+- market_name, market_description, market_address
+- market_city, market_zipcode, market_latitude, market_longitude
+- market_open_days, market_open_time, market_close_time
+- market_website, market_phone, market_email
+
+## 🚀 Deployment
+
+This is a Next.js application that can be deployed to:
+- Vercel (recommended)
+- Netlify
+- Any Node.js hosting platform
+
+## 📄 License
+
+This project is open source and available under the MIT License.
