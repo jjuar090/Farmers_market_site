@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#f0f9f0"/>
+  <rect width="400" height="300" fill="url(#grad)"/>
+  <circle cx="200" cy="120" r="40" fill="#86efac"/>
+  <path d="M200,180 Q230,140 260,180 L200,240 L140,180 Q170,140 200,180 Z" fill="#4ade80"/>
+  <text x="200" y="270" text-anchor="middle" font-family="Arial" font-size="16" fill="#166534">Farmers Market</text>
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0fdf4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dcfce7;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg> 

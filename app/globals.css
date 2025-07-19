@@ -155,6 +155,30 @@
   transform: translateY(-5px);
 }
 
+/* Enhanced hover effects for featured markets */
+.market-card.featured-market {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.market-card.featured-market:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Different hover effects based on image aspect ratio */
+.market-card.featured-market .market-card-image-wrapper[data-aspect-ratio="tall"]:hover {
+  transform: translateY(-6px) scale(1.01);
+}
+
+.market-card.featured-market .market-card-image-wrapper[data-aspect-ratio="wide"]:hover {
+  transform: translateY(-10px) scale(1.03);
+}
+
+.market-card.featured-market .market-card-image-wrapper[data-aspect-ratio="square"]:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
 /* Pinterest-style masonry grid */
 .masonry-grid {
   column-count: 1;
@@ -202,17 +226,51 @@
   padding-top: 100%; /* Default 1:1 aspect ratio */
 }
 
-/* Random heights for Pinterest-like effect */
-.market-card:nth-child(3n+1) .market-card-image-wrapper {
+/* Dynamic aspect ratios based on image dimensions for featured markets */
+.market-card.featured-market:nth-child(3n+1) .market-card-image-wrapper {
   padding-top: 120%; /* Taller */
 }
 
-.market-card:nth-child(3n+2) .market-card-image-wrapper {
+.market-card.featured-market:nth-child(3n+2) .market-card-image-wrapper {
   padding-top: 80%; /* Shorter */
 }
 
-.market-card:nth-child(3n+3) .market-card-image-wrapper {
+.market-card.featured-market:nth-child(3n+3) .market-card-image-wrapper {
   padding-top: 100%; /* Default */
+}
+
+/* Dynamic hover effects based on image aspect ratio */
+.market-card.featured-market .market-card-image {
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.market-card.featured-market:hover .market-card-image {
+  transform: scale(1.12);
+}
+
+/* Enhanced hover effects for different image sizes */
+.market-card.featured-market .market-card-image-wrapper[data-aspect-ratio="tall"] .market-card-image {
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.market-card.featured-market .market-card-image-wrapper[data-aspect-ratio="tall"]:hover .market-card-image {
+  transform: scale(1.08) translateY(-2%);
+}
+
+.market-card.featured-market .market-card-image-wrapper[data-aspect-ratio="wide"] .market-card-image {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.market-card.featured-market .market-card-image-wrapper[data-aspect-ratio="wide"]:hover .market-card-image {
+  transform: scale(1.15) translateX(-1%);
+}
+
+.market-card.featured-market .market-card-image-wrapper[data-aspect-ratio="square"] .market-card-image {
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.market-card.featured-market .market-card-image-wrapper[data-aspect-ratio="square"]:hover .market-card-image {
+  transform: scale(1.1);
 }
 
 .market-card-image {
@@ -239,6 +297,56 @@
   transform: scale(1.08);
 }
 
+/* Enhanced featured market image effects */
+.market-card.featured-market .market-card-image {
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  filter: brightness(1) contrast(1);
+}
+
+.market-card.featured-market:hover .market-card-image {
+  filter: brightness(1.1) contrast(1.05);
+}
+
+/* Dynamic aspect ratio effects for featured markets */
+.market-card.featured-market .market-card-image-wrapper[data-aspect-ratio="tall"] {
+  padding-top: 140% !important;
+}
+
+.market-card.featured-market .market-card-image-wrapper[data-aspect-ratio="tall"] .market-card-image {
+  object-position: center 30%;
+}
+
+.market-card.featured-market .market-card-image-wrapper[data-aspect-ratio="tall"]:hover .market-card-image {
+  transform: scale(1.08) translateY(-3%);
+  object-position: center 25%;
+}
+
+.market-card.featured-market .market-card-image-wrapper[data-aspect-ratio="wide"] {
+  padding-top: 75% !important;
+}
+
+.market-card.featured-market .market-card-image-wrapper[data-aspect-ratio="wide"] .market-card-image {
+  object-position: center center;
+}
+
+.market-card.featured-market .market-card-image-wrapper[data-aspect-ratio="wide"]:hover .market-card-image {
+  transform: scale(1.12) translateX(-2%);
+  object-position: center center;
+}
+
+.market-card.featured-market .market-card-image-wrapper[data-aspect-ratio="square"] {
+  padding-top: 100% !important;
+}
+
+.market-card.featured-market .market-card-image-wrapper[data-aspect-ratio="square"] .market-card-image {
+  object-position: center center;
+}
+
+.market-card.featured-market .market-card-image-wrapper[data-aspect-ratio="square"]:hover .market-card-image {
+  transform: scale(1.1);
+  object-position: center center;
+}
+
 /* Immersive hover effect styles */
 .market-card-overlay {
   position: absolute;
@@ -261,6 +369,29 @@
 .market-card:hover .market-card-overlay {
   transform: translateY(0);
   opacity: 1;
+}
+
+/* Enhanced overlay effects for featured markets */
+.market-card.featured-market .market-card-overlay {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6) 40%, rgba(0, 0, 0, 0.2) 70%, transparent);
+}
+
+.market-card.featured-market:hover .market-card-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 0.3) 70%, transparent);
+}
+
+/* Dynamic overlay positioning based on image aspect ratio */
+.market-card.featured-market .market-card-image-wrapper[data-aspect-ratio="tall"] .market-card-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5) 60%, transparent);
+}
+
+.market-card.featured-market .market-card-image-wrapper[data-aspect-ratio="wide"] .market-card-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.4) 50%, transparent);
+}
+
+.market-card.featured-market .market-card-image-wrapper[data-aspect-ratio="square"] .market-card-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6) 50%, transparent);
 }
 
 .market-card-title {

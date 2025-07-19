@@ -11,7 +11,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
 import Link from "next/link"
-import Image from "next/image"
+import SimpleMarketImage from "@/components/SimpleMarketImage"
 import { useRouter } from "next/navigation"
 import { FarmersMarket } from "@/lib/csv-utils"
 
@@ -407,18 +407,14 @@ export default function MarketsPage() {
                   {searchResults.map(({ market, matchDetails }, index) => (
                     <Card key={market.id} className="market-card overflow-hidden hover:shadow-lg p-0">
                       <div className="market-card-image-container">
-                        <div className="market-card-image-wrapper">
-                          <Image
-                            src={market.image_url || "/placeholder.svg"}
-                            alt={market.market_name}
-                            fill
-                            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                            className="market-card-image"
-                            priority={index < 4}
-                            quality={95}
-                            loading={index < 8 ? "eager" : "lazy"}
-                          />
-                        </div>
+                                                  <div className="market-card-image-wrapper">
+                            <SimpleMarketImage
+                              src={market.image_link || ""}
+                              alt={market.market_name}
+                              className="market-card-image w-full h-full object-cover"
+                              showName={true}
+                            />
+                          </div>
                         <div className="market-card-city-badge">{market.market_city}</div>
                         <div className="market-card-rating">
                           <Star className="fill-current" />

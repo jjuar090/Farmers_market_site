@@ -1,6 +1,6 @@
 'use client'
 
-import Image from "next/image"
+import SimpleMarketImage from "@/components/SimpleMarketImage"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -33,20 +33,28 @@ export default function MarketDetailPage({ params }: { params: { id: string } })
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Get all markets from CSV
-    const allMarkets = getFarmersMarkets();
-    
-    // Find the market with the matching ID
-    const foundMarket = allMarkets.find((m, index) => {
-      const marketId = generateMarketId(m.market_name, index);
-      return marketId === params.id;
-    });
-    
-    if (foundMarket) {
-      setMarket(foundMarket);
-    }
-    
-    setLoading(false);
+    const fetchMarket = async () => {
+      try {
+        // Get all markets from API
+        const allMarkets = await getFarmersMarkets();
+        
+        // Find the market with the matching ID
+        const foundMarket = allMarkets.find((m, index) => {
+          const marketId = generateMarketId(m.market_name, index);
+          return marketId === params.id;
+        });
+        
+        if (foundMarket) {
+          setMarket(foundMarket);
+        }
+      } catch (error) {
+        console.error('Error fetching market:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMarket();
   }, [params.id])
 
   if (loading) return <div className="flex justify-center items-center min-h-screen"><p>Loading market details...</p></div>
@@ -100,21 +108,13 @@ export default function MarketDetailPage({ params }: { params: { id: string } })
               <CardContent className="p-0">
                 <div className="grid md:grid-cols-2 gap-4 p-6">
                   <div className="space-y-4">
-                    {market.image_url ? (
-                      <Image
-                        src={market.image_url}
+                    <div className="rounded-lg w-full h-48 overflow-hidden">
+                      <SimpleMarketImage
+                        src={market.image_link || ""}
                         alt={`${market.market_name} view`}
-                        width={800}
-                        height={600}
-                        className="rounded-lg object-cover w-full h-48"
-                        quality={95}
-                        priority
+                        className="object-cover w-full h-full"
                       />
-                    ) : (
-                      <div className="rounded-lg bg-green-100 w-full h-48 flex items-center justify-center">
-                        <Leaf className="w-12 h-12 text-green-500" />
-                      </div>
-                    )}
+                    </div>
                     <div className="grid grid-cols-2 gap-2">
                       <div className="rounded-lg bg-amber-100 h-[120px] flex items-center justify-center">
                         <Leaf className="w-8 h-8 text-amber-500" />
